@@ -1,0 +1,7 @@
+# Normalise line endings so a deploy from any OS produces identical bytes.
+* text=auto eol=lf
+
+*.png binary
+*.webp binary
+*.ico binary
+*.woff2 binary

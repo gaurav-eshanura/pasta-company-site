@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /build/
+
+# Build tooling carries no indexable content.
+User-agent: GPTBot
+Allow: /
+
+Sitemap: https://pasta.eshanura.com/sitemap.xml

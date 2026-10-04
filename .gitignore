@@ -1,0 +1,7 @@
+node_modules/
+.mimosa/
+.firebase/
+build/shots/
+build/probe/
+*.log
+.DS_Store

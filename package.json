@@ -1,0 +1,23 @@
+{
+  "name": "pasta-company-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Brand website for The Pasta Company, an Eshanura Enterprises brand.",
+  "type": "module",
+  "scripts": {
+    "assets": "python build/extract_assets.py",
+    "fonts": "python build/fetch_fonts.py",
+    "build": "node build/site.mjs",
+    "check": "python build/check_site.py",
+    "serve": "node build/serve.mjs",
+    "audit": "node build/audit.mjs",
+    "shots": "node build/screenshot.mjs",
+    "deploy": "npm run build && npm run check && firebase deploy --only hosting",
+    "all": "npm run assets && npm run fonts && npm run build && npm run check"
+  },
+  "engines": { "node": ">=20" },
+  "devDependencies": {
+    "axe-core": "^4.10.0",
+    "playwright-core": "^1.49.0"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      "**/.*",
+      "build/**",
+      "node_modules/**",
+      "README.md",
+      "**/*.py",
+      "**/*.mjs",
+      "package.json",
+      "package-lock.json"
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(png|webp|svg|jpg|jpeg|gif|ico|woff|woff2)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(css|js)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=604800"
+          }
+        ]
+      },
+      {
+        "source": "/**/*.html",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          },
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "strict-origin-when-cross-origin"
+          },
+          {
+            "key": "X-Frame-Options",
+            "value": "SAMEORIGIN"
+          },
+          {
+            "key": "Strict-Transport-Security",
+            "value": "max-age=31536000; includeSubDomains"
+          },
+          {
+            "key": "Permissions-Policy",
+            "value": "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+          }
+        ]
+      },
+      {
+        "source": "/404.html",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=0, must-revalidate"
+          }
+        ]
+      }
+    ],
+    "cleanUrls": false
+  }
+}
