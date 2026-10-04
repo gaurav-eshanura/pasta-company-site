@@ -4,7 +4,10 @@ Brand website for The Pasta Company, a durum wheat pasta brand of Eshanura
 Enterprises Private Limited. Static HTML, no runtime framework, no build-time
 dependencies beyond Python and Node for the generator.
 
-**Live:** https://pasta.eshanura.com — hosted on Firebase, served over HTTPS.
+**Live:** https://pastacompany-eshanura.web.app (Firebase project
+`pastacompany-eshanura`). The custom domain `pasta.eshanura.com` is registered
+and its A record already matches — see [Custom domain](#custom-domain) for the
+one DNS record still outstanding.
 
 Every visual on the site is derived from the brand's reference design; the
 Eshanura wordmark in the footer comes from the sister **The Nuts Company**
@@ -115,6 +118,30 @@ domain, and nothing in this repo can force that. Two things make it fast:
 
 Indexing then typically takes days, not minutes. Google's old
 `/ping?sitemap=` endpoint no longer does anything useful.
+
+## Custom domain
+
+`pasta.eshanura.com` is registered against the hosting site and resolves to
+Firebase's IP. The TLS certificate is still `CERT_PENDING`, which needs one TXT
+record that only the DNS provider can add:
+
+| Host | Type | Value |
+| --- | --- | --- |
+| `_acme-challenge.pasta.eshanura.com` | TXT | see below |
+
+The challenge token rotates, so read the current value from
+**Firebase console → Hosting → Add custom domain → pasta.eshanura.com**, or run:
+
+```bash
+node build/add_domain.mjs pastacompany-eshanura pasta.eshanura.com
+```
+
+Once the record is in place the certificate issues on its own, usually within
+minutes, and the domain starts serving. Re-run the deploy afterwards if you
+want to be certain the release is current.
+
+`build/add_domain.mjs` also lists the domains already mapped to the site, so it
+is safe to re-run — it exits early if the domain is present.
 
 ## Quality gates
 
